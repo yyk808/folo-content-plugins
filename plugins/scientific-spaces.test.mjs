@@ -19,6 +19,17 @@ describe("scientific spaces adapter", () => {
     expect(result).toContain('data-math-display="false">H_t</math>')
   })
 
+  it("does not let truncated sidebar math consume article markup or display equations", () => {
+    const result = normalizeScientificSpacesMath(
+      String.raw`<aside><p>评论$me_j...</p><p>另一个$$未完成...</p></aside><div class="Post"><h1>标题</h1><div id="PostContent"><p>$H_t$正定</p><p>\begin{equation}x=1\end{equation}</p><p>$$x^2$$</p></div></div>`,
+    )
+    expect(result).toContain("<aside><p>评论$me_j...</p><p>另一个$$未完成...</p></aside>")
+    expect(result).toContain('<div class="Post"><h1>标题</h1><div id="PostContent">')
+    expect(result).toContain('data-math-display="false">H_t</math>')
+    expect(result.match(/data-math-display="true"/g)).toHaveLength(2)
+    expect(result).not.toContain("folo-scientific-math-")
+  })
+
   it("expands document macros and converts numbered display environments", () => {
     const result = normalizeScientificSpacesMath(String.raw`
       <p>See \eqref{eq:phi}.</p>

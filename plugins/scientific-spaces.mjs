@@ -206,11 +206,12 @@ export const normalizeScientificSpacesMath = (sourceHtml) => {
     return preserveMath(latex, true)
   })
 
-  html = html.replaceAll(/\$\$([\s\S]*?)\$\$/g, (_, content) =>
-    preserveMath(decodeFormulaHtml(content).trim(), true),
+  html = html.replaceAll(
+    /\$\$((?:[^<>\uE000\uE001]|<br\b[^>]*>|<!--[\s\S]*?-->)*?)\$\$/gi,
+    (_, content) => preserveMath(decodeFormulaHtml(content).trim(), true),
   )
   html = html.replaceAll(
-    /(^|[^\\$])\$(?!\$)([\s\S]+?)(?<!\\)\$/g,
+    /(^|[^\\$])\$((?:\\\$|[^$<>\uE000\uE001]|<br\b[^>]*>|<!--[\s\S]*?-->)+)(?<!\\)\$/gi,
     (_, prefix, content) => `${prefix}${preserveMath(decodeFormulaHtml(content).trim(), false)}`,
   )
 
