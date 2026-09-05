@@ -1,0 +1,180 @@
+[data-folo-content-processor="alphaxiv-hot-overview"],
+[data-folo-content-processor="arxiv-ai-overview"],
+[data-folo-content-processor="google-deepmind-news-enhanced"],
+[data-folo-content-processor="google-developers-blog-enhanced"],
+[data-folo-content-processor="arxiv-enhanced"],
+[data-folo-content-processor="hellogithub-enhanced"],
+[data-folo-content-processor="huggingface-blog-enhanced"],
+[data-folo-content-processor="meta-ai-blog-enhanced"],
+[data-folo-content-processor="scientific-spaces-enhanced"],
+[data-folo-content-processor="linkresearcher-enhanced"]{
+  max-width: 100%;
+  line-height: 1.75;
+  overflow-wrap: break-word;
+}
+
+[data-folo-content-processor="alphaxiv-hot-overview"] > [data-folo-content-role="header"],
+[data-folo-content-processor="arxiv-ai-overview"] > [data-folo-content-role="header"],
+[data-folo-content-processor="alphaxiv-hot-overview"] > [data-folo-content-role="abstract"],
+[data-folo-content-processor="arxiv-ai-overview"] > [data-folo-content-role="abstract"]{
+  margin-bottom: 1.5rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid color-mix(in srgb, currentColor 11%, transparent);
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, currentColor 3%, transparent);
+}
+
+[data-folo-content-processor="alphaxiv-hot-overview"] [data-folo-content-role="source-label"],
+[data-folo-content-processor="arxiv-ai-overview"] [data-folo-content-role="source-label"],
+[data-folo-content-processor="alphaxiv-hot-overview"] [data-folo-content-role="authors"],
+[data-folo-content-processor="arxiv-ai-overview"] [data-folo-content-role="authors"],
+[data-folo-content-processor="alphaxiv-hot-overview"] [data-folo-content-role="source-link"],
+[data-folo-content-processor="arxiv-ai-overview"] [data-folo-content-role="source-link"]{
+  font-size: 0.9em;
+  opacity: 0.72;
+}
+
+[data-folo-content-processor="alphaxiv-hot-overview"] [data-folo-content-role="ai-overview"] img,
+[data-folo-content-processor="arxiv-ai-overview"] [data-folo-content-role="ai-overview"] img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+[data-folo-content-processor="arxiv-enhanced"] > .ltx_title_document{
+  max-width: 30ch;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+[data-folo-content-processor="arxiv-enhanced"] .ltx_authors{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.65rem;
+  max-width: 58rem;
+  margin-inline: auto;
+}
+
+[data-folo-content-processor="arxiv-enhanced"] .ltx_creator{
+  padding: 0.7rem 0.85rem;
+  border: 1px solid color-mix(in srgb, currentColor 9%, transparent);
+  border-radius: 0.65rem;
+  text-align: center;
+}
+
+[data-folo-content-processor="arxiv-enhanced"] .ltx_abstract,
+[data-folo-content-processor="arxiv-enhanced"] .ltx_theorem,
+[data-folo-content-processor="arxiv-enhanced"] .ltx_proof{
+  padding: 1rem 1.15rem;
+  border: 1px solid color-mix(in srgb, currentColor 11%, transparent);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, currentColor 3%, transparent);
+}
+
+[data-folo-content-processor="arxiv-enhanced"] .folo-arxiv-equation{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.8rem;
+  overflow-x: auto;
+}
+
+[data-folo-content-processor="hellogithub-enhanced"] > header{
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, currentColor 11%, transparent);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, currentColor 3.5%, transparent);
+}
+
+[data-folo-content-processor="hellogithub-enhanced"] .folo-hg-identity,
+[data-folo-content-processor="hellogithub-enhanced"] .folo-hg-links{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+[data-folo-content-processor="hellogithub-enhanced"] .folo-hg-tags,
+[data-folo-content-processor="hellogithub-enhanced"] .folo-hg-links{
+  flex-wrap: wrap;
+}
+
+[data-folo-content-processor="hellogithub-enhanced"] .folo-hg-stats{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  padding: 0;
+  list-style: none;
+}
+
+[data-folo-content-processor="hellogithub-enhanced"] .folo-hg-stats > li,
+[data-folo-content-processor="hellogithub-enhanced"] .folo-hg-metadata > div{
+  padding: 0.75rem;
+  border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  border-radius: 0.7rem;
+}
+
+[data-folo-content-processor="scientific-spaces-enhanced"] > h1{
+  text-wrap: balance;
+}
+
+[data-folo-content-processor="huggingface-blog-enhanced"] > h1{
+  max-width: 36ch;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+[data-folo-content-processor="huggingface-blog-enhanced"] pre{
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+[data-folo-content-processor="google-deepmind-news-enhanced"] > h1,
+[data-folo-content-processor="google-developers-blog-enhanced"] > h1,
+[data-folo-content-processor="linkresearcher-enhanced"] > h1,
+[data-folo-content-processor="meta-ai-blog-enhanced"] > h1,
+[data-folo-content-processor="google-deepmind-news-enhanced"] header h1,
+[data-folo-content-processor="google-developers-blog-enhanced"] header h1,
+[data-folo-content-processor="linkresearcher-enhanced"] header h1,
+[data-folo-content-processor="meta-ai-blog-enhanced"] header h1{
+  max-width: 38ch;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+[data-folo-content-processor="google-deepmind-news-enhanced"] img,
+[data-folo-content-processor="google-developers-blog-enhanced"] img,
+[data-folo-content-processor="linkresearcher-enhanced"] img,
+[data-folo-content-processor="meta-ai-blog-enhanced"] img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+[data-folo-content-processor="google-deepmind-news-enhanced"] pre,
+[data-folo-content-processor="google-developers-blog-enhanced"] pre,
+[data-folo-content-processor="linkresearcher-enhanced"] pre,
+[data-folo-content-processor="meta-ai-blog-enhanced"] pre{
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+[data-folo-content-processor="scientific-spaces-enhanced"] blockquote{
+  padding: 0.95rem 1.15rem;
+  border-left: 3px solid color-mix(in srgb, currentColor 28%, transparent);
+  border-radius: 0 0.55rem 0.55rem 0;
+  background: color-mix(in srgb, currentColor 3.5%, transparent);
+}
+
+@media (max-width: 560px) {
+  [data-folo-content-processor="hellogithub-enhanced"] .folo-hg-stats{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

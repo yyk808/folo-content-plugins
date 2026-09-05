@@ -1,0 +1,46 @@
+name: Validate and release plugins
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Check release version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: node -e 'const m = require("./dist/folo-plugins.json").manifest; if (process.env.GITHUB_REF_NAME !== "v" + m.version) process.exit(1)'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: folo-plugins
+          path: dist/folo-plugins.json
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: folo-plugins
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release create "$GITHUB_REF_NAME" folo-plugins.json --title "$GITHUB_REF_NAME" --generate-notes

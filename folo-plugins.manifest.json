@@ -1,0 +1,1242 @@
+{
+  "schemaVersion": 1,
+  "hostApiVersion": 1,
+  "id": "neon-reading",
+  "name": "Neon Reading Plugins",
+  "description": "Enhanced reading for research papers, developer blogs and open-source projects.",
+  "version": "1.0.0",
+  "modules": [
+    {
+      "path": "plugins/scientific-spaces.mjs",
+      "sha256": "4ff9299c1fe8967c8020e91d8fc49a8f8d36ff65488df125c85e085f5029d703"
+    },
+    {
+      "path": "plugins/linkresearcher.mjs",
+      "sha256": "6cfe2d6703d759dc924ade3f0bc6e4f954f59a5f4aef16112695e4d27cfdd441"
+    },
+    {
+      "path": "plugins/alphaxiv-hot.mjs",
+      "sha256": "4cf9b7a07ff7fd0af2de844365ec3d090687730b1f4c0f6f27db1d88f42998c7"
+    },
+    {
+      "path": "plugins/arxiv-ai-overview.mjs",
+      "sha256": "1a563f995cbf11d952eb2df121c156fe2966671402f1c48f9e6b83488c1cf347"
+    },
+    {
+      "path": "plugins/arxiv-enhanced.mjs",
+      "sha256": "c98849137505cd52e5c6d2c8f815eed1b15832d0d21ac047cf076f294de9c9ca"
+    },
+    {
+      "path": "plugins/google-deepmind-news.mjs",
+      "sha256": "6cc6d90f60e1d22db5ec8fca90e1b7f495d47ec917107ccf197e9d290753285d"
+    },
+    {
+      "path": "plugins/google-developers-blog.mjs",
+      "sha256": "ab46b623c0081f89e536722dcf148b26f6080694eef98e5d5385633cdfa7f422"
+    },
+    {
+      "path": "plugins/hellogithub.mjs",
+      "sha256": "b53d5ce6f2bf747faf08e5e20328c51b97cfb6a337ae7b727d824eef3330a15d"
+    },
+    {
+      "path": "plugins/huggingface-blog.mjs",
+      "sha256": "04e26c6773fe9c1d51854a5cb9880c53fe20fed0ccca96510a7368cc2d22a4b1"
+    },
+    {
+      "path": "plugins/meta-ai-blog.mjs",
+      "sha256": "9977ff05acdf2ef296eea041eda5c86539730fbe1c4e031b385f032089f21ac4"
+    }
+  ],
+  "snippets": [
+    {
+      "id": "scientific-spaces-acquire",
+      "name": "科学空间增强阅读 · acquire",
+      "description": "通过授权的文章源网络访问提取完整正文，并将 MathJax 公式转换为可独立渲染的结构。",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": [
+            "https://spaces.ac.cn"
+          ]
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://kexue.fm",
+              "https://spaces.ac.cn"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/scientific-spaces.mjs"
+    },
+    {
+      "id": "scientific-spaces-article-transform",
+      "name": "科学空间增强阅读 · article-transform",
+      "description": "通过授权的文章源网络访问提取完整正文，并将 MathJax 公式转换为可独立渲染的结构。",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://kexue.fm",
+              "https://spaces.ac.cn"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/scientific-spaces.mjs"
+    },
+    {
+      "id": "scientific-spaces-extract",
+      "name": "科学空间增强阅读 · extract",
+      "description": "通过授权的文章源网络访问提取完整正文，并将 MathJax 公式转换为可独立渲染的结构。",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://kexue.fm",
+              "https://spaces.ac.cn"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/scientific-spaces.mjs"
+    },
+    {
+      "id": "scientific-spaces-pre-extract",
+      "name": "科学空间增强阅读 · pre-extract",
+      "description": "通过授权的文章源网络访问提取完整正文，并将 MathJax 公式转换为可独立渲染的结构。",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://kexue.fm",
+              "https://spaces.ac.cn"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/scientific-spaces.mjs"
+    },
+    {
+      "id": "linkresearcher-acquire",
+      "name": "领研网增强阅读 · acquire",
+      "description": "获取领研网文章的完整正文，清理分享、导航、评论和危险内联标记，并保留原文链接与图片。",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn.linkresearcher.com",
+              "https://www.linkresearcher.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/linkresearcher.mjs"
+    },
+    {
+      "id": "linkresearcher-article-transform",
+      "name": "领研网增强阅读 · article-transform",
+      "description": "获取领研网文章的完整正文，清理分享、导航、评论和危险内联标记，并保留原文链接与图片。",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn.linkresearcher.com",
+              "https://www.linkresearcher.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/linkresearcher.mjs"
+    },
+    {
+      "id": "linkresearcher-extract",
+      "name": "领研网增强阅读 · extract",
+      "description": "获取领研网文章的完整正文，清理分享、导航、评论和危险内联标记，并保留原文链接与图片。",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn.linkresearcher.com",
+              "https://www.linkresearcher.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/linkresearcher.mjs"
+    },
+    {
+      "id": "linkresearcher-pre-extract",
+      "name": "领研网增强阅读 · pre-extract",
+      "description": "获取领研网文章的完整正文，清理分享、导航、评论和危险内联标记，并保留原文链接与图片。",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn.linkresearcher.com",
+              "https://www.linkresearcher.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/linkresearcher.mjs"
+    },
+    {
+      "id": "alphaxiv-hot-acquire",
+      "name": "AlphaXiv Hot Papers AI Overview · acquire",
+      "description": "Loads the AlphaXiv AI Overview for entries from the AlphaXiv Hot Papers RSS feed and falls back to the feed summary when unavailable.",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": [
+            "https://www.alphaxiv.org"
+          ]
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/alphaxiv-hot.mjs"
+    },
+    {
+      "id": "alphaxiv-hot-article-transform",
+      "name": "AlphaXiv Hot Papers AI Overview · article-transform",
+      "description": "Loads the AlphaXiv AI Overview for entries from the AlphaXiv Hot Papers RSS feed and falls back to the feed summary when unavailable.",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/alphaxiv-hot.mjs"
+    },
+    {
+      "id": "alphaxiv-hot-extract",
+      "name": "AlphaXiv Hot Papers AI Overview · extract",
+      "description": "Loads the AlphaXiv AI Overview for entries from the AlphaXiv Hot Papers RSS feed and falls back to the feed summary when unavailable.",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/alphaxiv-hot.mjs"
+    },
+    {
+      "id": "alphaxiv-hot-pre-extract",
+      "name": "AlphaXiv Hot Papers AI Overview · pre-extract",
+      "description": "Loads the AlphaXiv AI Overview for entries from the AlphaXiv Hot Papers RSS feed and falls back to the feed summary when unavailable.",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/alphaxiv-hot.mjs"
+    },
+    {
+      "id": "arxiv-ai-overview-acquire",
+      "name": "arXiv AI Overview + abstract fallback · acquire",
+      "description": "For arXiv abstract entries, reads the public AlphaXiv HTML overview when it is already generated and falls back to the official arXiv abstract and metadata when it is unavailable.",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": [
+            "https://www.alphaxiv.org"
+          ]
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org",
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-ai-overview.mjs"
+    },
+    {
+      "id": "arxiv-ai-overview-article-transform",
+      "name": "arXiv AI Overview + abstract fallback · article-transform",
+      "description": "For arXiv abstract entries, reads the public AlphaXiv HTML overview when it is already generated and falls back to the official arXiv abstract and metadata when it is unavailable.",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org",
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-ai-overview.mjs"
+    },
+    {
+      "id": "arxiv-ai-overview-extract",
+      "name": "arXiv AI Overview + abstract fallback · extract",
+      "description": "For arXiv abstract entries, reads the public AlphaXiv HTML overview when it is already generated and falls back to the official arXiv abstract and metadata when it is unavailable.",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org",
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-ai-overview.mjs"
+    },
+    {
+      "id": "arxiv-ai-overview-pre-extract",
+      "name": "arXiv AI Overview + abstract fallback · pre-extract",
+      "description": "For arXiv abstract entries, reads the public AlphaXiv HTML overview when it is already generated and falls back to the official arXiv abstract and metadata when it is unavailable.",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org",
+              "https://paper-assets.alphaxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-ai-overview.mjs"
+    },
+    {
+      "id": "arxiv-enhanced-acquire",
+      "name": "arXiv enhanced reading · acquire",
+      "description": "Fetches the official arXiv HTML paper and falls back to the RSS content when full text is unavailable.",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-enhanced.mjs"
+    },
+    {
+      "id": "arxiv-enhanced-article-transform",
+      "name": "arXiv enhanced reading · article-transform",
+      "description": "Fetches the official arXiv HTML paper and falls back to the RSS content when full text is unavailable.",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-enhanced.mjs"
+    },
+    {
+      "id": "arxiv-enhanced-extract",
+      "name": "arXiv enhanced reading · extract",
+      "description": "Fetches the official arXiv HTML paper and falls back to the RSS content when full text is unavailable.",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-enhanced.mjs"
+    },
+    {
+      "id": "arxiv-enhanced-pre-extract",
+      "name": "arXiv enhanced reading · pre-extract",
+      "description": "Fetches the official arXiv HTML paper and falls back to the RSS content when full text is unavailable.",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://arxiv.org"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/arxiv-enhanced.mjs"
+    },
+    {
+      "id": "google-deepmind-news-acquire",
+      "name": "Google DeepMind News full articles · acquire",
+      "description": "Fetches the complete Google DeepMind article, removes site chrome and related-post recommendations, and falls back to the RSS summary when the page is unavailable.",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": [
+            "https://blog.google"
+          ]
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://lh3.googleusercontent.com",
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-deepmind-news.mjs"
+    },
+    {
+      "id": "google-deepmind-news-article-transform",
+      "name": "Google DeepMind News full articles · article-transform",
+      "description": "Fetches the complete Google DeepMind article, removes site chrome and related-post recommendations, and falls back to the RSS summary when the page is unavailable.",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://lh3.googleusercontent.com",
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-deepmind-news.mjs"
+    },
+    {
+      "id": "google-deepmind-news-extract",
+      "name": "Google DeepMind News full articles · extract",
+      "description": "Fetches the complete Google DeepMind article, removes site chrome and related-post recommendations, and falls back to the RSS summary when the page is unavailable.",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://lh3.googleusercontent.com",
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-deepmind-news.mjs"
+    },
+    {
+      "id": "google-deepmind-news-pre-extract",
+      "name": "Google DeepMind News full articles · pre-extract",
+      "description": "Fetches the complete Google DeepMind article, removes site chrome and related-post recommendations, and falls back to the RSS summary when the page is unavailable.",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://lh3.googleusercontent.com",
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-deepmind-news.mjs"
+    },
+    {
+      "id": "google-developers-blog-acquire",
+      "name": "Google Developers Blog full articles · acquire",
+      "description": "Fetches the complete Google Developers Blog article, preserving rich content and code while removing sharing, navigation, tags, and related-post recommendations.",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-developers-blog.mjs"
+    },
+    {
+      "id": "google-developers-blog-article-transform",
+      "name": "Google Developers Blog full articles · article-transform",
+      "description": "Fetches the complete Google Developers Blog article, preserving rich content and code while removing sharing, navigation, tags, and related-post recommendations.",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-developers-blog.mjs"
+    },
+    {
+      "id": "google-developers-blog-extract",
+      "name": "Google Developers Blog full articles · extract",
+      "description": "Fetches the complete Google Developers Blog article, preserving rich content and code while removing sharing, navigation, tags, and related-post recommendations.",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-developers-blog.mjs"
+    },
+    {
+      "id": "google-developers-blog-pre-extract",
+      "name": "Google Developers Blog full articles · pre-extract",
+      "description": "Fetches the complete Google Developers Blog article, preserving rich content and code while removing sharing, navigation, tags, and related-post recommendations.",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://storage.googleapis.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/google-developers-blog.mjs"
+    },
+    {
+      "id": "hellogithub-acquire",
+      "name": "HelloGitHub 增强阅读 · acquire",
+      "description": "从 Next.js 结构化数据生成简洁的开源项目详情，包括简介、项目指标、标签和官方链接。",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://img.hellogithub.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/hellogithub.mjs"
+    },
+    {
+      "id": "hellogithub-article-transform",
+      "name": "HelloGitHub 增强阅读 · article-transform",
+      "description": "从 Next.js 结构化数据生成简洁的开源项目详情，包括简介、项目指标、标签和官方链接。",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://img.hellogithub.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/hellogithub.mjs"
+    },
+    {
+      "id": "hellogithub-extract",
+      "name": "HelloGitHub 增强阅读 · extract",
+      "description": "从 Next.js 结构化数据生成简洁的开源项目详情，包括简介、项目指标、标签和官方链接。",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://img.hellogithub.com"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/hellogithub.mjs"
+    },
+    {
+      "id": "huggingface-blog-acquire",
+      "name": "Hugging Face Blog enhanced reading · acquire",
+      "description": "Fetches the complete server-rendered Hugging Face article and removes navigation, author controls, and the floating table of contents.",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn-uploads.huggingface.co",
+              "https://huggingface.co"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/huggingface-blog.mjs"
+    },
+    {
+      "id": "huggingface-blog-article-transform",
+      "name": "Hugging Face Blog enhanced reading · article-transform",
+      "description": "Fetches the complete server-rendered Hugging Face article and removes navigation, author controls, and the floating table of contents.",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn-uploads.huggingface.co",
+              "https://huggingface.co"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/huggingface-blog.mjs"
+    },
+    {
+      "id": "huggingface-blog-extract",
+      "name": "Hugging Face Blog enhanced reading · extract",
+      "description": "Fetches the complete server-rendered Hugging Face article and removes navigation, author controls, and the floating table of contents.",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn-uploads.huggingface.co",
+              "https://huggingface.co"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/huggingface-blog.mjs"
+    },
+    {
+      "id": "huggingface-blog-pre-extract",
+      "name": "Hugging Face Blog enhanced reading · pre-extract",
+      "description": "Fetches the complete server-rendered Hugging Face article and removes navigation, author controls, and the floating table of contents.",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://cdn-uploads.huggingface.co",
+              "https://huggingface.co"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/huggingface-blog.mjs"
+    },
+    {
+      "id": "meta-ai-blog-acquire",
+      "name": "Meta AI Blog enhanced reading · acquire",
+      "description": "Fetches the complete server-rendered Meta AI article and removes the hero chrome, carousel controls, and unsafe page markup.",
+      "injectionPoint": "acquire",
+      "permissions": {
+        "network": {
+          "enabled": true,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://ai.meta.com",
+              "https://lookaside.fbsbx.com",
+              "https://scontent-tpe1-1.xx.fbcdn.net"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/meta-ai-blog.mjs"
+    },
+    {
+      "id": "meta-ai-blog-article-transform",
+      "name": "Meta AI Blog enhanced reading · article-transform",
+      "description": "Fetches the complete server-rendered Meta AI article and removes the hero chrome, carousel controls, and unsafe page markup.",
+      "injectionPoint": "article-transform",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": true,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://ai.meta.com",
+              "https://lookaside.fbsbx.com",
+              "https://scontent-tpe1-1.xx.fbcdn.net"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/meta-ai-blog.mjs"
+    },
+    {
+      "id": "meta-ai-blog-extract",
+      "name": "Meta AI Blog enhanced reading · extract",
+      "description": "Fetches the complete server-rendered Meta AI article and removes the hero chrome, carousel controls, and unsafe page markup.",
+      "injectionPoint": "extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://ai.meta.com",
+              "https://lookaside.fbsbx.com",
+              "https://scontent-tpe1-1.xx.fbcdn.net"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/meta-ai-blog.mjs"
+    },
+    {
+      "id": "meta-ai-blog-pre-extract",
+      "name": "Meta AI Blog enhanced reading · pre-extract",
+      "description": "Fetches the complete server-rendered Meta AI article and removes the hero chrome, carousel controls, and unsafe page markup.",
+      "injectionPoint": "pre-extract",
+      "permissions": {
+        "network": {
+          "enabled": false,
+          "origins": []
+        },
+        "output": {
+          "allowInlineStyles": false,
+          "allowUnsafeEmbeds": false,
+          "remoteMedia": {
+            "enabled": true,
+            "origins": [
+              "https://ai.meta.com",
+              "https://lookaside.fbsbx.com",
+              "https://scontent-tpe1-1.xx.fbcdn.net"
+            ]
+          }
+        }
+      },
+      "enabled": true,
+      "module": "plugins/meta-ai-blog.mjs"
+    }
+  ],
+  "processors": [
+    {
+      "id": "alphaxiv-hot-overview",
+      "name": "AlphaXiv Hot Papers AI Overview",
+      "description": "Loads the AlphaXiv AI Overview for entries from the AlphaXiv Hot Papers RSS feed and falls back to the feed summary when unavailable.",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 300,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:www\\.)?alphaxiv\\.org/(?:abs|overview)/"
+        ],
+        "feedUrls": [
+          "https://alphaxiv-rss.keeloxy.workers.dev/"
+        ]
+      },
+      "steps": [
+        "alphaxiv-hot-acquire",
+        "alphaxiv-hot-pre-extract",
+        "alphaxiv-hot-extract",
+        "alphaxiv-hot-article-transform"
+      ]
+    },
+    {
+      "id": "arxiv-ai-overview",
+      "name": "arXiv AI Overview + abstract fallback",
+      "description": "For arXiv abstract entries, reads the public AlphaXiv HTML overview when it is already generated and falls back to the official arXiv abstract and metadata when it is unavailable.",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 240,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:(?:export\\.|www\\.)?arxiv\\.org)/abs/"
+        ]
+      },
+      "steps": [
+        "arxiv-ai-overview-acquire",
+        "arxiv-ai-overview-pre-extract",
+        "arxiv-ai-overview-extract",
+        "arxiv-ai-overview-article-transform"
+      ]
+    },
+    {
+      "id": "google-deepmind-news-enhanced",
+      "name": "Google DeepMind News full articles",
+      "description": "Fetches the complete Google DeepMind article, removes site chrome and related-post recommendations, and falls back to the RSS summary when the page is unavailable.",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 220,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:www\\.)?deepmind\\.google/blog/[^/?#]+/?(?:[?#].*)?$"
+        ]
+      },
+      "steps": [
+        "google-deepmind-news-acquire",
+        "google-deepmind-news-pre-extract",
+        "google-deepmind-news-extract",
+        "google-deepmind-news-article-transform"
+      ]
+    },
+    {
+      "id": "google-developers-blog-enhanced",
+      "name": "Google Developers Blog full articles",
+      "description": "Fetches the complete Google Developers Blog article, preserving rich content and code while removing sharing, navigation, tags, and related-post recommendations.",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 220,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://developers\\.googleblog\\.com/(?:en/)?[^/?#]+/?(?:[?#].*)?$"
+        ]
+      },
+      "steps": [
+        "google-developers-blog-acquire",
+        "google-developers-blog-pre-extract",
+        "google-developers-blog-extract",
+        "google-developers-blog-article-transform"
+      ]
+    },
+    {
+      "id": "arxiv-enhanced",
+      "name": "arXiv enhanced reading",
+      "description": "Fetches the official arXiv HTML paper and falls back to the RSS content when full text is unavailable.",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 200,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:export\\.|www\\.)?arxiv\\.org/(?:abs|html|pdf)/"
+        ]
+      },
+      "steps": [
+        "arxiv-enhanced-acquire",
+        "arxiv-enhanced-pre-extract",
+        "arxiv-enhanced-extract",
+        "arxiv-enhanced-article-transform"
+      ]
+    },
+    {
+      "id": "hellogithub-enhanced",
+      "name": "HelloGitHub 增强阅读",
+      "description": "从 Next.js 结构化数据生成简洁的开源项目详情，包括简介、项目指标、标签和官方链接。",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 180,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:www\\.)?hellogithub\\.com/(?:[a-z]{2}/)?repository/[0-9a-f]+/?(?:[?#].*)?$"
+        ]
+      },
+      "steps": [
+        "hellogithub-acquire",
+        "hellogithub-extract",
+        "hellogithub-article-transform"
+      ]
+    },
+    {
+      "id": "huggingface-blog-enhanced",
+      "name": "Hugging Face Blog enhanced reading",
+      "description": "Fetches the complete server-rendered Hugging Face article and removes navigation, author controls, and the floating table of contents.",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 180,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:www\\.)?huggingface\\.co/blog/(?!zh(?:/|$))"
+        ]
+      },
+      "steps": [
+        "huggingface-blog-acquire",
+        "huggingface-blog-pre-extract",
+        "huggingface-blog-extract",
+        "huggingface-blog-article-transform"
+      ]
+    },
+    {
+      "id": "meta-ai-blog-enhanced",
+      "name": "Meta AI Blog enhanced reading",
+      "description": "Fetches the complete server-rendered Meta AI article and removes the hero chrome, carousel controls, and unsafe page markup.",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 180,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://ai\\.meta\\.com/blog/[^?#]+"
+        ]
+      },
+      "steps": [
+        "meta-ai-blog-acquire",
+        "meta-ai-blog-pre-extract",
+        "meta-ai-blog-extract",
+        "meta-ai-blog-article-transform"
+      ]
+    },
+    {
+      "id": "scientific-spaces-enhanced",
+      "name": "科学空间增强阅读",
+      "description": "通过授权的文章源网络访问提取完整正文，并将 MathJax 公式转换为可独立渲染的结构。",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 180,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:www\\.)?(?:kexue\\.fm|spaces\\.ac\\.cn)/archives/\\d+/?(?:[?#].*)?$"
+        ]
+      },
+      "steps": [
+        "scientific-spaces-acquire",
+        "scientific-spaces-pre-extract",
+        "scientific-spaces-extract",
+        "scientific-spaces-article-transform"
+      ]
+    },
+    {
+      "id": "linkresearcher-enhanced",
+      "name": "领研网增强阅读",
+      "description": "获取领研网文章的完整正文，清理分享、导航、评论和危险内联标记，并保留原文链接与图片。",
+      "enabled": true,
+      "autoApply": true,
+      "priority": 170,
+      "match": {
+        "feedIds": [],
+        "sourceIds": [],
+        "urlPatterns": [
+          "^https?://(?:www\\.)?linkresearcher\\.com/theses/[0-9a-f-]+(?:[/?#].*)?$"
+        ]
+      },
+      "steps": [
+        "linkresearcher-acquire",
+        "linkresearcher-pre-extract",
+        "linkresearcher-extract",
+        "linkresearcher-article-transform"
+      ]
+    }
+  ],
+  "stylesheet": {
+    "path": "plugins/reading.css",
+    "sha256": "62cf3b97cc4c7604f46474d84216113059a252847228ad0007532f3b16a7e162"
+  }
+}
