@@ -4,11 +4,11 @@
   "id": "neon-reading",
   "name": "Neon Reading Plugins",
   "description": "Enhanced reading for research papers, developer blogs and open-source projects.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "modules": [
     {
       "path": "plugins/scientific-spaces.mjs",
-      "sha256": "4ff9299c1fe8967c8020e91d8fc49a8f8d36ff65488df125c85e085f5029d703"
+      "sha256": "787fbda3a79ddcff0d213aad704daf05b13450282385056ef6e5b12b667a8a37"
     },
     {
       "path": "plugins/linkresearcher.mjs",

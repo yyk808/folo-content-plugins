@@ -163,7 +163,12 @@ const mathElementHtml = (latex, display) =>
 
 /** Convert the site's MathJax document syntax into independent KaTeX-compatible math nodes. */
 export const normalizeScientificSpacesMath = (sourceHtml) => {
-  let html = expandDocumentNewCommands(sourceHtml)
+  const protectedNodes = []
+  const source = sourceHtml.replaceAll(
+    /<(script|style|pre|code|math)\b[^>]*>[\s\S]*?<\/\1\s*>/gi,
+    (node) => `\uE000folo-scientific-protected-${protectedNodes.push(node) - 1}\uE001`,
+  )
+  let html = expandDocumentNewCommands(source)
     .replaceAll("<!--more-->", "")
     .replaceAll(/\\require\{[^}]+\}/g, "")
   const references = new Map()
@@ -210,16 +215,21 @@ export const normalizeScientificSpacesMath = (sourceHtml) => {
   )
 
   for (const [index, math] of mathNodes.entries()) {
-    html = html.replaceAll(`\uE000folo-scientific-math-${index}\uE001`, math)
+    html = html.replaceAll(`\uE000folo-scientific-math-${index}\uE001`, () => math)
+  }
+  for (const [index, node] of protectedNodes.entries()) {
+    html = html.replaceAll(`\uE000folo-scientific-protected-${index}\uE001`, () => node)
   }
   return html
 }
 
 export async function acquire({ context, html }) {
   try {
-    return await fetchScientificSpacesHtml(context.fetch, context.url)
+    return normalizeScientificSpacesMath(
+      await fetchScientificSpacesHtml(context.fetch, context.url),
+    )
   } catch (error) {
-    if (html?.trim()) return html
+    if (html?.trim()) return normalizeScientificSpacesMath(html)
     throw error
   }
 }
